@@ -8,15 +8,15 @@ export const Navbar = () => {
   return (
     <div className='flex items-center justify-between py-4'>
       <Link to="/">
-        <img src={assets.logo} alt="Logo" className='w-28 sm:w-32 lg:w-40' />
+        <img src={assets.logo} alt="Logo" className='w-8 sm:w-10 lg:w-14 h-auto' />
       </Link>
 
       <div>
         {user ? (
           <div></div>
         ) : (
-          <div className='flex items-center gap-2 sm:gap-5'>
-            <button className=' bg-zinc-800 text-white px-7 py-2  sm:px-10 text-sm rounded-full'>
+          <div className='flex items-center gap-6 lg:gap-8'>
+            <button className='bg-zinc-800 text-white px-7 py-2 sm:px-6 text-sm rounded-full hover:bg-zinc-700 transition'>
                login
             </button>
           </div>
