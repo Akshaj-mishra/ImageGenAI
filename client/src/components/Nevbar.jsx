@@ -3,7 +3,7 @@ import { assets } from '../assets/assets';
 import { Link } from 'react-router-dom';
 
 export const Navbar = () => {
-  const [user, setUser] = useState(true); // ignore
+  const [user, setUser] = useState(false); // ignore
 
   return (
     <div className='flex items-center justify-between py-4'>
