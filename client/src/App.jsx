@@ -6,8 +6,7 @@ import Nevbar from './components/Nevbar'
 
 const App = () => {
   return (
-    <div className='px-6 sm:px-12 md:px-16 lg:px-30 min-h-screen bg-gradient-to-b from-white to-blue-400
-    '>
+    <div className='px-6 sm:px-12 md:px-16 lg:px-30 min-h-screen bg-gradient-to-b from-purple-500 to-white'>
 
 
     <Nevbar/>
