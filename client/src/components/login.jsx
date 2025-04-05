@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { assets } from '../assets/assets'
 
 export const Login = () => {
+      const [state, setState] = useState('Login')
   return (
     <div className='absolute top-0 left-0 right-0 bottom-0 z-10 backdrop-blur-sm bg-black/30 flex justify-center items-center'>
       <form className='relative bg-white p-10 rounded-xl text-slate-500 w-full max-w-md shadow-xl'>
-        <h1 className='text-center text-2xl text-neutral-700 font-medium'>Sign up</h1>
+        <h1 className='text-center text-2xl text-neutral-700 font-medium'> {state} </h1>
         <p className='text-sm text-center'>Welcome back! Please sign in to continue</p>
 
         {/* Full Name */}
-        <div className='border px-4 py-2 flex items-center gap-3 rounded-full mt-5'>
+        { state !== 'Login' && <div className='border px-4 py-2 flex items-center gap-3 rounded-full mt-5'>
           <img src={assets.profileIcon} className="w-8 h-8 object-contain" alt="Profile" />
           <input
             type='text'
@@ -17,7 +18,7 @@ export const Login = () => {
             placeholder='Full Name'
             required
           />
-        </div>
+        </div>}
 
         {/* Email */}
         <div className='border px-4 py-2 flex items-center gap-3 rounded-full mt-4'>
@@ -43,11 +44,11 @@ export const Login = () => {
 
         <p className='text-right mt-2 text-xs text-blue-500 cursor-pointer hover:underline'>Forgot Password?</p>
 
-        <button className='bg-blue-600 w-full text-white py-2 rounded-full'> Create account </button>
+        <button className='bg-blue-600 w-full text-white py-2 rounded-full'> {state === 'Login' ? 'login' : 'Create Account'}  </button>
 
-        <p className='mt-5 text-center'> Don't have an account ? <span className='text-blue-600 cursor-pointer'>Sign up</span></p>
-
-        <p className='mt-5 text-center'> Already have an account ? <span className='text-blue-600 cursor-pointer'>Login</span></p>
+        { state === 'Login' ? <p className='mt-5 text-center'> Don't have an account ? <span className='text-blue-600 cursor-pointer' onClick={()=> setState('Sign Up')}>Sign up</span></p>
+        :
+        <p className='mt-5 text-center'> Already have an account ? <span className='text-blue-600 cursor-pointer'onClick={()=> setState('Login')} >Login</span></p>}
         
         <img src={assets.crossIcon} alt="" className='absolute top-5 right-5 cursor-pointer'/>
       </form>
