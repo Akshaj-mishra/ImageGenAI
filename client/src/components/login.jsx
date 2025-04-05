@@ -1,32 +1,59 @@
 import React from 'react'
 import { assets } from '../assets/assets'
 
-
-export const login = () => {
+export const Login = () => {
   return (
     <div className='absolute top-0 left-0 right-0 bottom-0 z-10 backdrop-blur-sm bg-black/30 flex justify-center items-center'>
-        <form className='relative bg-white p-10 rounded-xl text-slate-500'>
-            <h1 className='text-center text-2xl text-neutral-700 font-medium' >Sign up</h1>
-            <p className='text-sm'>Welcome back! please sign in to continue</p>
+      <form className='relative bg-white p-10 rounded-xl text-slate-500 w-full max-w-md shadow-xl'>
+        <h1 className='text-center text-2xl text-neutral-700 font-medium'>Sign up</h1>
+        <p className='text-sm text-center'>Welcome back! Please sign in to continue</p>
 
-            <div className='border px-6 flex item-center gap-2 rounded-full mt-5'>
-                <img src={assets.profileIcon} class="w-9 h-9 object-cover" alt="" />
-                <input type='text'  className='outline-none text-sm' placeholder='Full Name' required />
-            </div>
+        {/* Full Name */}
+        <div className='border px-4 py-2 flex items-center gap-3 rounded-full mt-5'>
+          <img src={assets.profileIcon} className="w-8 h-8 object-contain" alt="Profile" />
+          <input
+            type='text'
+            className='outline-none text-sm h-8 w-full bg-transparent'
+            placeholder='Full Name'
+            required
+          />
+        </div>
 
-            <div className='border px-6 flex item-center gap-2 rounded-full mt-5'>
-                <img src={assets.emailIcon} class="w-9 h-9 object-cover" alt="" />
-                <input type='email'  className='outline-none text-sm' placeholder='Email Id ' required />
-            </div>
-            
-            <div className='border px-6 flex item-center gap-2 rounded-full mt-5'>
-                <img src={assets.lockIcon} class="w-9 h-9 object-cover" alt="" />
-                <input type='password'  className='outline-none text-sm' placeholder='Password' required />
-            </div>
+        {/* Email */}
+        <div className='border px-4 py-2 flex items-center gap-3 rounded-full mt-4'>
+          <img src={assets.emailIcon} className="w-8 h-8 object-contain" alt="Email" />
+          <input
+            type='email'
+            className='outline-none text-sm h-8 w-full bg-transparent'
+            placeholder='Email ID'
+            required
+          />
+        </div>
 
-        </form>
+        {/* Password */}
+        <div className='border px-4 py-2 flex items-center gap-3 rounded-full mt-4'>
+          <img src={assets.lockIcon} className="w-8 h-8 object-contain" alt="Password" />
+          <input
+            type='password'
+            className='outline-none text-sm h-8 w-full bg-transparent'
+            placeholder='Password'
+            required
+          />
+        </div>
+
+        <p className='text-right mt-2 text-xs text-blue-500 cursor-pointer hover:underline'>Forgot Password?</p>
+
+        <button className='bg-blue-600 w-full text-white py-2 rounded-full'> Create account </button>
+
+        <p className='mt-5 text-center'> Don't have an account ? <span className='text-blue-600 cursor-pointer'>Sign up</span></p>
+
+        <p className='mt-5 text-center'> Already have an account ? <span className='text-blue-600 cursor-pointer'>Login</span></p>
+        
+        <img src={assets.crossIcon} alt="" className='absolute top-5 right-5 cursor-pointer'/>
+      </form>
+       
     </div>
   )
 }
 
-export default login
+export default Login
