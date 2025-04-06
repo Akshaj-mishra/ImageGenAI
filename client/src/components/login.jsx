@@ -50,9 +50,9 @@ export const Login = () => {
 
         <button className='bg-blue-600 w-full text-white py-2 rounded-full mt-3 hover:bg-blue-400'> {state === 'Login' ? 'login' : 'Create Account'}  </button>
 
-        { state === 'Login' ? <p className='mt-5 text-center'> Don't have an account ? <span className='text-blue-600 cursor-pointer' onClick={()=> setState('Sign Up')}>Sign up</span></p>
+        { state === 'Login' ? <p className='mt-5 text-center'> Don't have an account ? <span className='text-blue-600 cursor-pointer hover:underline' onClick={()=> setState('Sign Up')}>Sign up</span></p>
         :
-        <p className='mt-5 text-center'> Already have an account ? <span className='text-blue-600 cursor-pointer'onClick={()=> setState('Login')} >Login</span></p>}
+        <p className='mt-5 text-center'> Already have an account ? <span className='text-blue-600 cursor-pointer hover:underline'onClick={()=> setState('Login')} >Login</span></p>}
         
         <img src={assets.crossIcon} alt="" className='absolute top-5 right-5 cursor-pointer'/>
       </form>
