@@ -48,7 +48,7 @@ export const Login = () => {
 
           
 
-        <button className='bg-blue-600 w-full text-white py-2 rounded-full mt-5'> {state === 'Login' ? 'login' : 'Create Account'}  </button>
+        <button className='bg-blue-600 w-full text-white py-2 rounded-full mt-3'> {state === 'Login' ? 'login' : 'Create Account'}  </button>
 
         { state === 'Login' ? <p className='mt-5 text-center'> Don't have an account ? <span className='text-blue-600 cursor-pointer' onClick={()=> setState('Sign Up')}>Sign up</span></p>
         :
