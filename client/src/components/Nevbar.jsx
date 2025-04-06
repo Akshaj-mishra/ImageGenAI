@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { assets } from '../assets/assets';
-import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AppContext } from '../context/AppContext';
 
 export const Navbar = () => {
+
+  const { user } = useContext(AppContext); 
+
   
-  const {user} = useContext
+  const navigate = useNavigate();
 
   return (
     <div className='flex items-center justify-between py-4'>
