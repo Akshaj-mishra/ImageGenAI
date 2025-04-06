@@ -11,7 +11,7 @@ export const Footer = () => {
             <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             {/* Logo / Brand */}
             <div>
-                <h2 className="text-2xl font-bold mb-4">NuroART</h2>
+                <h2 className="text-2xl font-bold mb-4">NeuroART</h2>
                 <p className="text-sm text-gray-400">
                 Building quality of your desired images.
                 </p>
@@ -19,7 +19,7 @@ export const Footer = () => {
     
             {/* Links */}
             <div>
-                <h3 className="text-lg font-semibold mb-3">NuroART</h3>
+                <h3 className="text-lg font-semibold mb-3">NeuroART</h3>
                 <ul className="space-y-2 text-sm">
                 <li><a href="#" className="hover:text-gray-300">About Us</a></li>
                 <li><a href="#" className="hover:text-gray-300">Careers</a></li>
@@ -60,7 +60,7 @@ export const Footer = () => {
     
             {/* Bottom Bar */}
             <div className="text-center text-sm text-gray-500 mt-10">
-            © {new Date().getFullYear()} NuroART. All rights reserved.
+            © {new Date().getFullYear()} NeuroART. All rights reserved.
             </div>
         </footer>
     )
