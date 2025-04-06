@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { assets } from '../assets/assets';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
 
 export const Navbar = () => {
-  const [user, setUser] = useState(false); // ignore
+  
+  const {user} = useContext
 
   return (
     <div className='flex items-center justify-between py-4'>
