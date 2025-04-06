@@ -42,9 +42,13 @@ export const Login = () => {
           />
         </div>
 
-        <p className='text-right mt-2 text-xs text-blue-500 cursor-pointer hover:underline'>Forgot Password?</p>
+        <p className='text-right mt-3 text-xs text-blue-500 cursor-pointer hover:underline'>Forgot Password?</p>
 
-        <button className='bg-blue-600 w-full text-white py-2 rounded-full'> {state === 'Login' ? 'login' : 'Create Account'}  </button>
+        <button className='bg-orange-400 w-full text-white py-2 rounded-full mt-2'> {state === 'Login' ? 'login' : 'Create Account'} with Google  </button>
+
+          
+
+        <button className='bg-blue-600 w-full text-white py-2 rounded-full mt-5'> {state === 'Login' ? 'login' : 'Create Account'}  </button>
 
         { state === 'Login' ? <p className='mt-5 text-center'> Don't have an account ? <span className='text-blue-600 cursor-pointer' onClick={()=> setState('Sign Up')}>Sign up</span></p>
         :
