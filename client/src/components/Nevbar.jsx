@@ -17,7 +17,7 @@ export const Navbar = () => {
       </Link>
 
       <div>
-        <h1 className='flex text-black text-9x1 text-left font-semibold'>NuroART</h1>
+        <h1 className='flex text-black text-9x1 text-left font-semibold'>NeuroART</h1>
       </div>
 
       <div>
