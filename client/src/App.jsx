@@ -11,7 +11,7 @@ const App = () => {
 
 
     <Nevbar/>
-    {/* <Login/> */}
+    <Login/>
       <Routes>
 
         <Route path='/' element = {<Home/>}/>
