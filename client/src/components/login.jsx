@@ -1,10 +1,11 @@
 import React, { useState, useContext } from 'react'
 import { assets } from '../assets/assets'
 import { AppContext } from '../context/Appcontext';
+import { CircleUserRound } from 'lucide-react';
 
 export const Login = () => {
       const [state, setState] = useState('Login');
-      const {  setshowlogin } = useContext(AppContext);
+      const { setshowlogin } = useContext(AppContext);
 
   return (
     <div className='absolute top-0 left-0 right-0 bottom-0 z-10 backdrop-blur-sm bg-black/30 flex justify-center items-center'>
@@ -14,7 +15,7 @@ export const Login = () => {
 
         {/* Full Name */}
         { state !== 'Login' && <div className='border px-4 py-2 flex items-center gap-3 rounded-full mt-5'>
-          <img src={assets.profileIcon} className="w-8 h-8 object-contain" alt="Profile" />
+          <CircleUserRound className="w-6 h-6 text-gray-500" />
           <input
             type='text'
             className='outline-none text-sm h-8 w-full bg-transparent'
