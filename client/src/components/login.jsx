@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { assets } from '../assets/assets'
+import { AppContext } from '../context/Appcontext';
 
 export const Login = () => {
-      const [state, setState] = useState('Login')
+      const [state, setState] = useState('Login');
+      const {  setshowlogin } = useContext(AppContext);
+
   return (
     <div className='absolute top-0 left-0 right-0 bottom-0 z-10 backdrop-blur-sm bg-black/30 flex justify-center items-center'>
       <form className='relative bg-white p-10 rounded-xl text-slate-500 w-full max-w-md shadow-xl'>
@@ -54,7 +57,7 @@ export const Login = () => {
         :
         <p className='mt-5 text-center'> Already have an account ? <span className='text-blue-600 cursor-pointer hover:underline'onClick={()=> setState('Login')} >Login</span></p>}
         
-        <img src={assets.crossIcon} alt="" className='absolute top-5 right-5 cursor-pointer'/>
+        <img onClick={() => setshowlogin(false)} src={assets.crossIcon} alt="" className='absolute top-5 right-5 cursor-pointer'/>
       </form>
        
     </div>
