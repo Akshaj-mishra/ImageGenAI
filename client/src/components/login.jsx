@@ -3,12 +3,15 @@ import { assets } from '../assets/assets';
 import { AppContext } from '../context/Appcontext';
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../firebase/firebase";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { setshowlogin } = useContext(AppContext);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
 
   const handleEmailPasswordSignIn = async () => {
     setLoading(true);
@@ -17,6 +20,7 @@ export const Login = () => {
       console.log("User signed in:", userCredential.user);
       alert("Login successful!");
       setshowlogin(false);
+      navigate("/result", { replace: true });
     } catch (error) {
       console.error("Error signing in:", error.message);
       if (error.code === "auth/user-not-found") {
@@ -37,6 +41,7 @@ export const Login = () => {
       console.log("Google sign-in:", result.user);
       alert("Signed in with Google!");
       setshowlogin(false);
+      navigate("/result", { replace: true });
     } catch (error) {
       console.error("Google sign-in error:", error.message);
       alert("Google sign-in failed");

@@ -1,15 +1,17 @@
 import { createContext, useState } from "react";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from "../firebase/firebase";
 
 export const AppContext = createContext();
 
 const AppContextProvider = (props) =>{
 
-        const [user, setUser] = useState(false);
+        const [user, loading, error] = useAuthState(auth);
         const [showlogin , setshowlogin] = useState (false);
 
         const value = {
 
-            user, setUser,
+            user, loading, error,
             showlogin , setshowlogin
 
         }

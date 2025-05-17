@@ -7,8 +7,18 @@ export const Navbar = () => {
 
   const { user, setshowlogin } = useContext(AppContext);
 
-  
   const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);            
+      navigate("/");
+      setshowlogin(true);                
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
+  };
+
 
   return (
     <div className='flex items-center justify-between py-4'>
@@ -30,7 +40,7 @@ export const Navbar = () => {
                <img src={assets.profileIcon} className='w-10 drop-shadow' alt="" />
                <div className='absolute hidden group-hover:block top-0 right-0 z-10 text-black rounded pt-12'>
                  <ul className='list-none m-0 p-2 bg-white rounded-md text-sm'>
-                    <li className='py-1 px-2 cursor-pointer pr-10'> Logout </li>
+                    <li onClick = {handleLogout}className='py-1 px-2 cursor-pointer pr-10'> Logout </li>
                  </ul>
                </div>
             </div>
