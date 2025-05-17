@@ -1,68 +1,112 @@
-import React, { useState, useContext } from 'react'
-import { assets } from '../assets/assets'
+import React, { useState, useContext } from 'react';
+import { assets } from '../assets/assets';
 import { AppContext } from '../context/Appcontext';
-import { CircleUserRound } from 'lucide-react';
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../firebase/firebase";
 
 export const Login = () => {
-      const [state, setState] = useState('Login');
-      const { setshowlogin } = useContext(AppContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { setshowlogin } = useContext(AppContext);
+  const [loading, setLoading] = useState(false);
+
+  const handleEmailPasswordSignIn = async () => {
+    setLoading(true);
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      console.log("User signed in:", userCredential.user);
+      alert("Login successful!");
+      setshowlogin(false);
+    } catch (error) {
+      console.error("Error signing in:", error.message);
+      if (error.code === "auth/user-not-found") {
+        alert("User not found. Please check your email.");
+      } else if (error.code === "auth/wrong-password") {
+        alert("Wrong password. Please try again.");
+      } else {
+        alert("Login failed: " + error.message);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      console.log("Google sign-in:", result.user);
+      alert("Signed in with Google!");
+      setshowlogin(false);
+    } catch (error) {
+      console.error("Google sign-in error:", error.message);
+      alert("Google sign-in failed");
+    }
+  };
 
   return (
     <div className='absolute top-0 left-0 right-0 bottom-0 z-10 backdrop-blur-sm bg-black/30 flex justify-center items-center'>
-      <form className='relative bg-white p-10 rounded-xl text-slate-500 w-full max-w-md shadow-xl'>
-        <h1 className='text-center text-2xl text-neutral-700 font-medium'> {state} </h1>
-        <p className='text-sm text-center'>Welcome back! Please sign in to continue</p>
+      <form 
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleEmailPasswordSignIn();
+        }}
+        className='relative bg-white p-10 rounded-xl text-slate-500 w-full max-w-md shadow-xl'
+      >
+        <h1 className='text-center text-2xl text-neutral-700 font-medium'>Login</h1>
+        <p className='text-sm text-center'>Please login to continue</p>
 
-        {/* Full Name */}
-        { state !== 'Login' && <div className='border px-4 py-2 flex items-center gap-3 rounded-full mt-5'>
-          <CircleUserRound className="w-6 h-6 text-gray-500" />
-          <input
-            type='text'
-            className='outline-none text-sm h-8 w-full bg-transparent'
-            placeholder='Full Name'
-            required
-          />
-        </div>}
-
-        {/* Email */}
+        {/* Email Input */}
         <div className='border px-4 py-2 flex items-center gap-3 rounded-full mt-4'>
           <img src={assets.emailIcon} className="w-8 h-8 object-contain" alt="Email" />
           <input
             type='email'
-            className='outline-none text-sm h-8 w-full bg-transparent'
             placeholder='Email ID'
+            className='outline-none text-sm h-8 w-full bg-transparent'
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
 
-        {/* Password */}
+        {/* Password Input */}
         <div className='border px-4 py-2 flex items-center gap-3 rounded-full mt-4'>
           <img src={assets.lockIcon} className="w-8 h-8 object-contain" alt="Password" />
           <input
             type='password'
-            className='outline-none text-sm h-8 w-full bg-transparent'
             placeholder='Password'
+            className='outline-none text-sm h-8 w-full bg-transparent'
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
 
-        <p className='text-right mt-3 text-xs text-blue-500 cursor-pointer hover:underline'>Forgot Password?</p>
+        {/* Google Login */}
+        <button
+          type="button"
+          onClick={handleGoogleSignIn}
+          className='bg-orange-400 w-full text-white py-2 rounded-full mt-4 hover:bg-amber-400'
+        >
+          Login with Google
+        </button>
 
-        <button className='bg-orange-400 w-full text-white py-2 rounded-full mt-2 hover:bg-amber-400'> {state === 'Login' ? 'login' : 'Create Account'} with Google  </button>
+        {/* Email/Password Login */}
+        <button
+          type="submit"
+          className='bg-blue-600 w-full text-white py-2 rounded-full mt-3 hover:bg-blue-400'
+          disabled={loading}
+        >
+          {loading ? "Logging in..." : "Login"}
+        </button>
 
-          
-
-        <button className='bg-blue-600 w-full text-white py-2 rounded-full mt-3 hover:bg-blue-400'> {state === 'Login' ? 'login' : 'Create Account'}  </button>
-
-        { state === 'Login' ? <p className='mt-5 text-center'> Don't have an account ? <span className='text-blue-600 cursor-pointer hover:underline' onClick={()=> setState('Sign Up')}>Sign up</span></p>
-        :
-        <p className='mt-5 text-center'> Already have an account ? <span className='text-blue-600 cursor-pointer hover:underline'onClick={()=> setState('Login')} >Login</span></p>}
-        
-        <img onClick={() => setshowlogin(false)} src={assets.crossIcon} alt="" className='absolute top-5 right-5 cursor-pointer'/>
+        {/* Close button */}
+        <img
+          onClick={() => setshowlogin(false)}
+          src={assets.crossIcon}
+          alt="Close"
+          className='absolute top-5 right-5 cursor-pointer'
+        />
       </form>
-       
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
