@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { assets } from '../assets/assets';
 import { Link, useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/Appcontext';
+import { auth } from "../firebase/firebase";
+import { signOut } from "firebase/auth";
 
 export const Navbar = () => {
 
@@ -13,7 +15,7 @@ export const Navbar = () => {
     try {
       await signOut(auth);            
       navigate("/");
-      setshowlogin(true);                
+      setshowlogin(false);                
     } catch (error) {
       console.error("Logout error:", error);
     }
