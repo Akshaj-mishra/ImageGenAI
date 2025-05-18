@@ -21,7 +21,6 @@ export const Navbar = () => {
     }
   };
 
-
   return (
     <div className='flex items-center justify-between py-4'>
       <div className='flex items-center py-4'>
@@ -37,7 +36,7 @@ export const Navbar = () => {
       <div>
         {user ? (
           <div className='flex items-center gap-2 sm:gap-3'>
-            <p className='text-black font-medium text-sm sm:text-base max-sm:hidden pl-2'> Hi, Akshaj</p>
+            <p className='text-black font-medium text-sm sm:text-base max-sm:hidden pl-2'> Hi, {user.displayName}</p>
             <div className='relative group'>
                <img src={assets.profileIcon} className='w-10 drop-shadow' alt="" />
                <div className='absolute hidden group-hover:block top-0 right-0 z-10 text-black rounded pt-12'>
