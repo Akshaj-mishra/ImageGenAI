@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Search } from "lucide-react";
+import { assets } from "../assets/assets"
 
 function Result() {
   const [prompt, setPrompt] = useState("");
@@ -66,6 +67,8 @@ function Result() {
       }
     };
   }, [imageUrl]);
+
+  
 
   return (
     <div className="p-4">
