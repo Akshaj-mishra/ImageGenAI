@@ -33,8 +33,6 @@ function Result() {
       }
 
       const data = await response.json();
-
-      // If your server returns image URL as data.image
       setImageUrl(data.image);
     } catch (error) {
       alert(error.message || "Image generation failed");
