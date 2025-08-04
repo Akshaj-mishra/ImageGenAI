@@ -21,7 +21,7 @@ const App = () => {
     }, [user, navigate]);
 
   return (
-    <div className='px-6 sm:px-12 md:px-16 lg:px-30 min-h-screen bg-gradient-to-b from-white to-blue-300'>
+    <div className='px-6 sm:px-12 md:px-16 lg:px-30 min-h-screen bg-gradient-to-b from-white to-green-200'>
 
 
     <Nevbar/>

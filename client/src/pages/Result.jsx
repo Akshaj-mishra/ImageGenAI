@@ -13,8 +13,6 @@ function Result() {
     }
 
     setLoading(true);
-
-    // Clean up previous image URL to free memory
     if (imageUrl) {
       URL.revokeObjectURL(imageUrl);
       setImageUrl(null);
@@ -64,7 +62,7 @@ function Result() {
         <button
           onClick={handleGenerate}
           disabled={loading}
-          className="flex items-center px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition disabled:opacity-50"
+          className="flex items-center px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-blue-600 transition disabled:opacity-50"
         >
           <Search className="mr-2 w-4 h-4" />
           Generate
@@ -82,9 +80,8 @@ function Result() {
           />
         )}
 
-        {!loading && !imageUrl && (
-          <p className="text-black text-3xl font-semibold">...Let me Cook !!!!</p>
-        )}
+        
+        
       </div>
     </div>
   );

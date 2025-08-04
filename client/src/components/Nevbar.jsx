@@ -28,7 +28,7 @@ export const Navbar = () => {
           <Link to="/">
             <img src={assets.logo} alt="Logo" className='w-8 sm:w-10 lg:w-14 h-auto' />
           </Link>
-          <h1 className='text-black text-3xl font-semibold'>NeuroART</h1>
+          <h1 className='text-black text-3xl font-semibold'>plantVillage</h1>
           
         </div>
       </div>
